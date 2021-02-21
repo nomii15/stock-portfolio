@@ -30,12 +30,14 @@ module.exports = (app) => {
             });
 
             bcrypt.genSalt(10, (err, salt) => {
-                bcrypt.hash(newUser.password, salt, (err, hash) => {
+                bcrypt.hash(req.body.password, salt, (err, hash) => {
                   if (err) throw err;
                   newUser.password = hash;
                   newUser.save();
                 })
             });
+
+            res.send({ success: "You have successfully registered!" });
         }
     });
 
