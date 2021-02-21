@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+
 const { Schema } = mongoose;
 
 const userSchema = Schema({
@@ -9,4 +10,4 @@ const userSchema = Schema({
   phone: { type: String },
 });
 
-mongoose.model("users", userSchema);
+mongoose.model('users', userSchema);
