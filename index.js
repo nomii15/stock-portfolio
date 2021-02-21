@@ -5,8 +5,9 @@ const passport = require("passport");
 const keys = require("./config/keys");
 
 require("./models/user");
-require("./models/account");
-require("./models/external");
+require("./models/portfolio");
+require("./models/watchlist");
+require("./models/stock");
 
 require("./services/passport");
 
@@ -21,11 +22,11 @@ app.use(bodyParser.urlencoded({extended: false,}));
 app.use(bodyParser.json());
 
 app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.session());
 
 require("./routes/auth")(app);
-require("./routes/external")(app);
-require("./routes/user")(app);
+//require("./routes/external")(app);
+//require("./routes/user")(app);
 
 app.get('/', (req,res) => {
     res.send({hi: 'There'});
