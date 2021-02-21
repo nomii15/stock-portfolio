@@ -4,13 +4,39 @@ const mongoose = require("mongoose");
 const keys = require("../config/keys");
 const User = mongoose.model("users");
 const Validator = require("validator");
-const validateRegisterInput = require("../validation/auth/register");
-const validateLoginInput = require("../validation/auth/login");
+const validateRegisterInput = require("../validation/register");
+const validateLoginInput = require("../validation/login");
 const crypto = require("crypto");
 
 module.exports = (app) => {
     app.post("/api/register", async (req, res) => {
+        const { errors, isValid } = validateRegisterInput(req.body);
 
+        if (!isValid) {
+            return res.status(400).json(errors);
+        }
+
+        const user = await User.findOne({ email: req.body.email });
+
+        if (user) {
+            return res.status(400).json({ email: "Email already exists" });
+        } else {
+            const buf = await crypto.randomBytes(20);
+            const token = buf.toString("hex");
+            const newUser = new User({
+                name: req.body.name,
+                email: req.body.email,
+                phone: req.body.phone,
+            });
+
+            bcrypt.genSalt(10, (err, salt) => {
+                bcrypt.hash(newUser.password, salt, (err, hash) => {
+                  if (err) throw err;
+                  newUser.password = hash;
+                  newUser.save();
+                })
+            });
+        }
     });
 
     app.post("/api/login", async (req, res) => {
