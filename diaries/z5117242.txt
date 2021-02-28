@@ -1,0 +1,13 @@
+Week 1
+
+Our group was formed in Week 1. As a group, we decided to undertake the stock portfolio app project. I volunteered to be the scrum master.
+I made the Jira instance and Jira project for our COMP3900 project. As a group, we discussed what features we wanted to have in our stock portfolio project.
+
+Week 2
+
+Before our meeting, I discussed with our Git maintainer Melanie to discuss what Git workflow we wanted to undertake, as I began preparing a Git workflow tutorial.
+I also set up our proposal document and began working on the proposal. I was the scribe to the document as the team discussed what our project requirements were.
+We also discussed what epic stories we wanted to have. We assigned epic stories to each member to write respective user stories, before our next meeting. I wrote
+4 user stories for the epic story regarding user social interaction. I also worked on defining the problem domain, competitors and what they lack as well as 
+organising the sprint times.
+
